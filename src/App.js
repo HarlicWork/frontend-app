@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import ReviewDetails from "./pages/ReviewDetails";
 import Category from "./pages/Category";
 import SiteHeader from "./components/SiteHeader";
+import FellowList from "./pages/FellowList";
 
 //apollo client
 const client = new ApolloClient({
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route path="/category/:id">
               <Category />
+            </Route>
+            <Route path="/fellowlist">
+              <FellowList />
             </Route>
           </Switch>
         </div>

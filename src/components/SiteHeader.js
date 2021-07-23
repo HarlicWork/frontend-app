@@ -25,10 +25,10 @@ const SiteHeader = () => {
   return (
     <div className="site-header">
       <Link to="/">
-        <h1>Games Review</h1>
+        <h1>ASM Fellow List</h1>
       </Link>
       <nav className="categories">
-        <span>Filter reviews by category:</span>
+        <span>Filter fellow by discipline:</span>
         {data.categories.map((category) => (
           <Link key={category.id} to={`/category/${category.id}`}>
             {category.name}
