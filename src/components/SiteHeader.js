@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
+import logo from "../asm_logo.png";
 
 const DISCIPLINES = gql`
   query GetDisciplines {
@@ -24,8 +25,9 @@ const SiteHeader = () => {
 
   return (
     <div className="site-header">
+      <img src={logo} className="img_logo" alt="asm-logo" />
       <Link to="/">
-        <h1>ASM Fellow List</h1>
+        <h1>Fellow Directory</h1>
       </Link>
       <nav className="categories">
         <span>Filter fellow by discipline:</span>

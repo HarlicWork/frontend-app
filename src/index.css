@@ -67,3 +67,10 @@ a {
 .textData {
   font-family: "Poppins";
 }
+
+.img_logo {
+  height: auto;
+  width: auto;
+  border-radius: 0%;
+  margin: 0px;
+}
