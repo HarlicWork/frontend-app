@@ -2,11 +2,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 //pages & layout
-import HomePage from "./pages/HomePage";
-import ReviewDetails from "./pages/ReviewDetails";
-import Category from "./pages/Category";
 import SiteHeader from "./components/SiteHeader";
 import FellowList from "./pages/FellowList";
+import FellowDetails from "./pages/FellowDetails";
+import Discipline from "./pages/Discipline";
+import ErrorPage from "./pages/ErrorPage";
 
 //apollo client
 const client = new ApolloClient({
@@ -22,16 +22,16 @@ function App() {
           <SiteHeader />
           <Switch>
             <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route path="/details/:id">
-              <ReviewDetails />
-            </Route>
-            <Route path="/category/:id">
-              <Category />
-            </Route>
-            <Route path="/fellowlist">
               <FellowList />
+            </Route>
+            <Route path="/fellow/:id">
+              <FellowDetails />
+            </Route>
+            <Route path="/discipline/:id">
+              <Discipline />
+            </Route>
+            <Route path="*">
+              <ErrorPage />
             </Route>
           </Switch>
         </div>

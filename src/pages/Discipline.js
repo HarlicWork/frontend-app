@@ -1,43 +1,38 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
-import SearchBar from "../components/SearchBar";
-import Card from "../components/Card";
+import { Link, useParams } from "react-router-dom";
 
-const FELLOWS = gql`
-  query GetFellows {
-    fellows {
+import Card from "../components/Card";
+import SearchBar from "../components/SearchBar";
+
+const DISCIPLINE = gql`
+  query GetDiscipline($id: ID!) {
+    discipline(id: $id) {
       id
       name
-      discipline
-      area_of_expertise
-      email
-      secondary_email
-      official_address
-      date_of_election
-      gender
-      phone
-      mobile_number
-      biography
-      image {
+      fellows {
         id
         name
-        url
+        discipline
+        area_of_expertise
       }
     }
   }
 `;
 
-const FellowList = () => {
-  const { data, error, loading } = useQuery(FELLOWS);
+const Discipline = () => {
+  const { id } = useParams();
   const [searchFellow, setSearchFellow] = useState("");
+  const { data, error, loading } = useQuery(DISCIPLINE, {
+    variables: { id: id },
+  });
 
   if (loading) {
     return <p>Loading...</p>;
   }
 
   if (error) {
-    return <p>Error fetching fellow list</p>;
+    return <p>Error :(</p>;
   }
 
   //   console.log(data);
@@ -45,8 +40,7 @@ const FellowList = () => {
   return (
     <div>
       <SearchBar onChange={(e) => setSearchFellow(e.target.value)} />
-
-      {data.fellows
+      {data.discipline.fellows
         .filter((fellow) => {
           if (fellow.name.toLowerCase().includes(searchFellow.toLowerCase())) {
             return fellow;
@@ -71,4 +65,4 @@ const FellowList = () => {
   );
 };
 
-export default FellowList;
+export default Discipline;

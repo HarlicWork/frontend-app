@@ -19,14 +19,15 @@ h4 {
   padding: 20px;
   box-sizing: border-box;
 }
+
 a {
   text-decoration: none;
-  color: #8e2ad6;
-  border-bottom: 1px dotted;
+  color: #2c387e;
+  /* border-bottom: 1px dotted; */
 }
 .site-header h1 {
   font-size: 1.5em;
-  color: #8e2ad6;
+  color: #2c387e;
   padding-bottom: 10px;
   border-bottom: 2px solid;
 }
@@ -61,4 +62,8 @@ a {
 .review-card small {
   margin-right: 10px;
   color: #777;
+}
+
+.textData {
+  font-family: "Poppins";
 }

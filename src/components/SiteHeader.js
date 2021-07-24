@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 
-const CATEGORIES = gql`
-  query GetCategories {
-    categories {
+const DISCIPLINES = gql`
+  query GetDisciplines {
+    disciplines {
       name
       id
     }
@@ -12,7 +12,7 @@ const CATEGORIES = gql`
 `;
 
 const SiteHeader = () => {
-  const { data, error, loading } = useQuery(CATEGORIES);
+  const { data, error, loading } = useQuery(DISCIPLINES);
 
   if (loading) {
     return <p>Loading categories...</p>;
@@ -29,9 +29,9 @@ const SiteHeader = () => {
       </Link>
       <nav className="categories">
         <span>Filter fellow by discipline:</span>
-        {data.categories.map((category) => (
-          <Link key={category.id} to={`/category/${category.id}`}>
-            {category.name}
+        {data.disciplines.map((discipline) => (
+          <Link key={discipline.id} to={`/discipline/${discipline.id}`}>
+            {discipline.name}
           </Link>
         ))}
       </nav>
